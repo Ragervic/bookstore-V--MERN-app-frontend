@@ -41,15 +41,14 @@ export const AuthProvider = ({ children }) => {
     // Manage user
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user)
-            setLoading(false)
             if (user) {
                 const { email, displayName, photoURL } = user
-                const userData = {
-                    email,username: displayName, photo: photoURL
-                }
+                const userData = {email,username: displayName, photo: photoURL}
+                setCurrentUser(userData)
+            }else {
+                setCurrentUser(null)
             }
-        })
+            setLoading(false)})
         return () => unSubscribe()
         
     },[])
