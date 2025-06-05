@@ -7,6 +7,7 @@ import {useAuth} from '../context/AuthContext.jsx'
 const DashboardLayout = () => {
 
     const currentUser=useAuth();
+    
     const handleLogout = () => {
         localStorage.removeItem('token');
         navigate("/")
@@ -73,11 +74,7 @@ const DashboardLayout = () => {
                               <span className="text-sm text-gray-600">{currentUser?.username||"Book Worm"}</span>
                           </div>
                           <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
-                                <img
-        src={currentUser?.photo || "../assets/vic2.jpg"}
-        alt="user profile"
-        className="h-full w-full object-cover"
-      />
+                                <img src={currentUser?.photo || "../assets/vic2.jpg"} alt="user profile" className="h-full w-full object-cover"/>
                           </span>
                           <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="hidden sm:block h-6 w-6 text-gray-300">
                               <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
